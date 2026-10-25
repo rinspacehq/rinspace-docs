@@ -19,6 +19,8 @@ for (const [path, heading] of pages) {
 
 const assets = new URL('_next/static/', root);
 assert.ok((await stat(assets)).isDirectory(), 'Next static assets missing');
+assert.ok((await stat(new URL('assets/brand/rinspace-mark-128.png', root))).isFile(), 'Rinspace brand mark missing');
+assert.ok((await stat(new URL('favicon-32x32.png', root))).isFile(), 'Rinspace favicon missing');
 const search = JSON.parse(await readFile(new URL('api/search', root), 'utf8'));
 assert.equal(search.type, 'advanced', 'Static search export missing');
 

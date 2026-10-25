@@ -20,3 +20,4 @@ npm run dev
 本仓库只维护技术文档站。用户的文章、书籍、标签内容不放在这里，也不由文档站渲染。
 
 文档站基于 Fumadocs 官方静态 Next.js 模板建立；上游模板及依赖按 MIT 许可证使用，本站新增源码及文档按 [AGPL-3.0](LICENSE) 发布。
+品牌图标取自 `rinspacehq/rinspace-web` 的正式公开源码。
