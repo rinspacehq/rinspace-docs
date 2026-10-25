@@ -9,9 +9,9 @@ import {
   SearchDialogList,
   SearchDialogOverlay,
   type SharedProps,
-} from 'fumadocs-ui/components/dialog/search';
+} from '@fumadocs/base-ui/components/dialog/search';
 import { useStaticSearch } from 'fumadocs-core/search/client';
-import { useI18n } from 'fumadocs-ui/contexts/i18n';
+import { useI18n } from '@fumadocs/base-ui/contexts/i18n';
 
 export default function DefaultSearchDialog(props: SharedProps) {
   const { locale } = useI18n(); // (optional) for i18n
