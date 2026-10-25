@@ -6,6 +6,22 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+.docs-brand-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.docs-brand-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+html.dark .docs-brand-mark {
+  filter: invert(1);
+}
+
 html {
   scrollbar-gutter: stable;
 }
