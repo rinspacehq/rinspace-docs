@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-打开 `http://localhost:3000/docs/`。提交前运行 `npm run typecheck`、`npm run build`。构建产物在 `out/`；发布系统只消费审查过的固定提交和构建产物。
+打开 `http://localhost:3000/docs/`。提交前运行 `npm run typecheck`、`npm run build`。合并到 `main` 后，CI 自动构建固定发行，站点更新器验收通过后自动更新 `/docs`，通常在数分钟内完成。构建失败时保留线上旧版本。
 
 ## 边界
 
