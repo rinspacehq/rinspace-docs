@@ -1,0 +1,39 @@
+name: Documentation site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run verify:output
+      - name: Package immutable static site
+        if: github.event_name == 'push'
+        run: |
+          tar -czf "docs-static-${GITHUB_SHA}.tar.gz" out Dockerfile deploy/nginx.conf
+          sha256sum "docs-static-${GITHUB_SHA}.tar.gz" > "docs-static-${GITHUB_SHA}.sha256"
+      - name: Publish immutable release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "docs-${GITHUB_SHA}" \
+            "docs-static-${GITHUB_SHA}.tar.gz" \
+            "docs-static-${GITHUB_SHA}.sha256" \
+            --target "${GITHUB_SHA}" \
+            --title "Docs ${GITHUB_SHA}" \
+            --notes "Immutable static documentation build from ${GITHUB_SHA}."

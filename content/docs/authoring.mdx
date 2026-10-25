@@ -1,0 +1,23 @@
+---
+title: 编写文档
+description: 在 GitHub 上编辑 Markdown／MDX，并通过审查发布。
+---
+
+源码：[rinspacehq/rinspace-docs](https://github.com/rinspacehq/rinspace-docs) · `content/docs/`
+
+## 在 GitHub 上修改
+
+1. 编辑 `content/docs/*.mdx`。正文使用 Markdown，文件顶部设置 `title` 和 `description`。
+2. 新页面加入 `content/docs/meta.json` 的 `pages` 列表。
+3. 提交 Pull Request；合并后构建新版本。
+
+内部链接使用相对路径，例如 `./architecture.mdx`。
+
+## 本地预览
+
+```bash
+npm ci
+npm run dev
+```
+
+地址：`http://localhost:3000/docs/`。提交前运行 `npm run typecheck` 和 `npm run build`。

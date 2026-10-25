@@ -1,0 +1,19 @@
+---
+title: 系统架构
+description: 芥子环主要服务的职责边界。
+---
+
+| 模块 | 职责 |
+| --- | --- |
+| Rinspace Web | 网站页面、内容入口与浏览器交互 |
+| Rinspace 私有产品仓库 | 产品契约、业务服务、集成与部署 |
+| Gitea | 文章、书籍和标签内容的 Git 仓库 |
+| Renderer | 将 Markdown、LaTeX、Typst 内容处理为发布结果 |
+| TeXlyre | 浏览器中的项目编辑工作台 |
+| Rin | 站内 AI 助手 |
+
+文档站从本仓库的 Markdown／MDX 文件构建静态页面，独立部署在 `/docs`。
+
+## 内容链路
+
+作者在在线编辑器或 Git 仓库中修改源文件。产品服务协调发布，Renderer 生成阅读结果。标签内容由标签仓库维护。
